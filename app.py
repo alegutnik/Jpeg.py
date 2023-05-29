@@ -5,7 +5,7 @@ from reportlab.lib.units import mm
 
 import interface
 import settings_page
-from Client import Client
+from client import Client
 from convert import Jpeg
 from settings_page import pdf, height
 
