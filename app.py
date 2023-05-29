@@ -6,7 +6,7 @@ from reportlab.lib.units import mm
 import interface
 import settings_page
 from Client import Client
-from convert import Pdf
+from convert import Jpeg
 from settings_page import pdf, height
 
 
@@ -82,7 +82,7 @@ pdf.drawCentredString(*coordinates(3, 1), str(client.additional_number_2()))
 pdf.save()
 path_jpeg = settings_page.folder_path
 name_jpeg = f"{name}_{birthday}"
-pdf = Pdf(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
+pdf = Jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
 pdf.pdf_to_jpeg()
 # pdf_to_jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
 # os.startfile(f"{settings_page.folder_path}/{name}_{birthday}.jpeg")
