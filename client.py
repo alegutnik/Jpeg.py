@@ -44,15 +44,14 @@ class Client:
 
     def additional_number_1(self):
         """Функция для расчёта первого дополнительного числа"""
-        additional_number_1 = sum(int(i) for i in self.birthday if i.isdigit())
-        return additional_number_1
+        return sum(int(i) for i in self.birthday if i.isdigit())
 
     def additional_number_2(self):
         """Функция для расчёта второго дополнительного числа"""
-        additional_number_2 = sum(int(i) for i in str(self.additional_number_1()))
-        return additional_number_2
+        return sum(int(i) for i in str(self.additional_number_1()))
 
     def additional_number_3(self):
+        # sourcery skip: assign-if-exp, inline-immediately-returned-variable, lift-return-into-if
         """Функция для расчёта третьего дополнительного числа"""
         if int(self.birthday[0]) != 0:
             additional_number_3 = int(
@@ -66,8 +65,7 @@ class Client:
 
     def additional_number_4(self):
         """Функция для расчёта четвертого дополнительного числа"""
-        additional_number_4 = sum(int(i) for i in str(self.additional_number_3()))
-        return additional_number_4
+        return sum(int(i) for i in str(self.additional_number_3()))
 
     def create_string_for_main_calculate(self):
         """Создание строки для вычисления основных показателей"""
@@ -78,5 +76,4 @@ class Client:
                 + str(self.additional_number_3())
                 + str(self.additional_number_4())
         )
-        text_search = (i for i in start_string if i.isdigit())
-        return text_search
+        return (i for i in start_string if i.isdigit())
