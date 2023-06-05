@@ -76,4 +76,8 @@ class Client:
                 + str(self.additional_number_3())
                 + str(self.additional_number_4())
         )
-        return (i for i in start_string if i.isdigit())
+        text_search = [i for i in start_string if i.isdigit()]
+        return text_search
+
+
+cl = Client("віаів", "25.11.1568")

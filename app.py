@@ -58,11 +58,6 @@ for key, value in coordinats_general_numbers.items():
 # Устанавливаем цвет текста
 pdf.setFillColor(text_color_white)
 
-# Вставка заголовка на страницу
-pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.3) * mm, name)
-pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.6) * mm, birthday)
-
-# -------------------------------------
 
 # Координаты дополнительных показательей
 coordinats_second_numbers = {"Быт": coordinates(2, 5),
@@ -79,24 +74,18 @@ for key, value in coordinats_second_numbers.items():
 
 pdf.drawCentredString(*coordinates(3, 1), str(client.additional_number_2()))
 
+# Вставка заголовка на страницу
+pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.6-5) * mm, birthday)
+pdf.setFont("Klein-Medium", 16 * mm)
+pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.3-5) * mm, name.upper())
+
+
+# -------------------------------------
+
 pdf.save()
 path_jpeg = settings_page.folder_path
 name_jpeg = f"{name}_{birthday}"
-pdf = Jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
-pdf.pdf_to_jpeg()
-# pdf_to_jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
-# os.startfile(f"{settings_page.folder_path}/{name}_{birthday}.jpeg")
-print(pdf.img_path)
-os.startfile(pdf.img_path.replace("/", "\\"))
-
-# try:
-#     file_path = f"./{name}_{birthday}.pdf"
-#     with open(file_path, "r", encoding="utf-8") as file:
-#         # Чтение содержимого файла
-#         content = file.read()
-#         # Дальнейшая обработка содержимого файла
-#         print(content)  # Пример: вывод содержимого файла
-# except FileNotFoundError:
-#     print("Файл не найден")
-# except IOError:
-#     print("Ошибка ввода-вывода при открытии файла")
+jpeg = Jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
+jpeg.convert_to_jpeg()
+print(jpeg.img_path)
+os.startfile(jpeg.img_path.replace("/", "\\"))

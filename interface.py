@@ -32,7 +32,6 @@ class App(CTk.CTk):
         self.btn = CTk.CTkButton(master=self.general_frame, text="Готово", width=100, command=self.get_value)
         self.btn.pack()
 
-
         # Атрибуты для хранения значений
         self.name = ""
         self.birthday = ""
@@ -48,6 +47,5 @@ class App(CTk.CTk):
         self.destroy()
 
 
-# if __name__ == "__main__":
 app = App()
 app.mainloop()

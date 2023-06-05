@@ -30,10 +30,10 @@ create_folder(folder_path)
 pdf = canvas.Canvas(f"{folder_path}/{name}_{birthday}.pdf", pagesize=custom_page_size)
 
 # Загрузка нового шрифта
-pdfmetrics.registerFont(TTFont('Montserrat', './font/Montserrat-VariableFont_wght.ttf'))
+pdfmetrics.registerFont(TTFont('Klein-Medium', './font/Klein-Medium.ttf'))
 
 # Установка нового шрифта
-pdf.setFont("Montserrat", 14 * mm)
+pdf.setFont("Klein-Medium", 18 * mm)
 
 # Вставка картинки на страницу
 if app.language == "RUS":
