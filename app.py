@@ -1,12 +1,13 @@
+#!/usr/bin/env python
+
 import os
 
+from pdf2image import convert_from_path
 from reportlab.lib import colors
 from reportlab.lib.units import mm
 
 import interface
-import settings_page
 from client import Client
-from convert import Jpeg
 from settings_page import pdf, height
 
 
@@ -58,7 +59,6 @@ for key, value in coordinats_general_numbers.items():
 # Устанавливаем цвет текста
 pdf.setFillColor(text_color_white)
 
-
 # Координаты дополнительных показательей
 coordinats_second_numbers = {"Быт": coordinates(2, 5),
                              "Темперамент": coordinates(4, 1),
@@ -75,17 +75,15 @@ for key, value in coordinats_second_numbers.items():
 pdf.drawCentredString(*coordinates(3, 1), str(client.additional_number_2()))
 
 # Вставка заголовка на страницу
-pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.6-5) * mm, birthday)
+pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.6 - 5) * mm, birthday)
 pdf.setFont("Klein-Medium", 16 * mm)
-pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.3-5) * mm, name.upper())
-
+pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.3 - 5) * mm, name.upper())
 
 # -------------------------------------
 
 pdf.save()
-path_jpeg = settings_page.folder_path
-name_jpeg = f"{name}_{birthday}"
-jpeg = Jpeg(f"{settings_page.folder_path}/{name}_{birthday}.pdf", path_jpeg, name_jpeg)
-jpeg.convert_to_jpeg()
-print(jpeg.img_path)
-os.startfile(jpeg.img_path.replace("/", "\\"))
+path = f"result/{name}_{birthday}/{name}_{birthday}"
+images = convert_from_path(f"{path}.pdf", 500, poppler_path=r'poppler-0.68.0\bin')
+images[0].save(f"{path}.jpeg", "JPEG")
+
+os.startfile(f"{path}.jpeg".replace("/","\\"))
