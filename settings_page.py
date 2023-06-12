@@ -36,8 +36,13 @@ pdfmetrics.registerFont(TTFont('Klein-Medium', './font/Klein-Medium.ttf'))
 pdf.setFont("Klein-Medium", 18 * mm)
 
 # Вставка картинки на страницу
-if app.language == "RUS":
-    image_path = "./Шаблон RUS.png"
-elif app.language == "UKR":
-    image_path = "./Шаблон UKR.png"
+if app.language == "RUS" and app.gender == "Woman":
+    image_path = "./template/Шаблон RUS.png"
+elif app.language == "UKR" and app.gender == "Woman":
+    image_path = "./template/Шаблон UKR.png"
+elif app.language == "RUS" and app.gender == "Man":
+    image_path = "./template/Шаблон UKR man.png"
+elif app.language == "UKR" and app.gender == "Man":
+    image_path = "./template/Шаблон UKR man.png"
+
 pdf.drawImage(image_path, x=0, y=0, width=width * mm, height=height * mm)

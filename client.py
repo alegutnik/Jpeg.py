@@ -39,7 +39,7 @@ class Client:
             "Темперамент": self.text_search.count("3") + self.text_search.count("5") + self.text_search.count("7"),
             "Цель": self.text_search.count("1") + self.text_search.count("4") + self.text_search.count("7"),
             "Семья": self.text_search.count("2") + self.text_search.count("5") + self.text_search.count("8"),
-            "Привычки": self.text_search.count("2") + self.text_search.count("6") + self.text_search.count("9"),
+            "Привычки": self.text_search.count("3") + self.text_search.count("6") + self.text_search.count("9"),
         }
 
     def additional_number_1(self):
@@ -48,7 +48,8 @@ class Client:
 
     def additional_number_2(self):
         """Функция для расчёта второго дополнительного числа"""
-        return sum(int(i) for i in str(self.additional_number_1()))
+        return sum_value(self.additional_number_1())
+        # return sum(int(i) for i in str(self.additional_number_1()))
 
     def additional_number_3(self):
         # sourcery skip: assign-if-exp, inline-immediately-returned-variable, lift-return-into-if
@@ -78,6 +79,12 @@ class Client:
         )
         text_search = [i for i in start_string if i.isdigit()]
         return text_search
+
+
+def sum_value(value):
+    while value >= 10:
+        value -= 9
+    return value
 
 
 cl = Client("віаів", "25.11.1568")

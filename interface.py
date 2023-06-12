@@ -6,7 +6,7 @@ class App(CTk.CTk):
         super().__init__()
         # Создание окна, задание его размера
         self.width = 300
-        self.height = 400
+        self.height = 450
         self.geometry(f"{self.width}x{self.height}")
         self.title("Нумерологические показатели")
         self.resizable(False, False)
@@ -29,6 +29,11 @@ class App(CTk.CTk):
         self.language_label = CTk.CTkLabel(master=self.general_frame, text="Выберите язык")
         self.language_label.pack(pady=(0, 20))
 
+        self.gender_entry = CTk.CTkComboBox(master=self.general_frame, values=("Woman", "Man"))
+        self.gender_entry.pack()
+        self.gender_label = CTk.CTkLabel(master=self.general_frame, text="Выберите пол")
+        self.gender_label.pack(pady=(0, 20))
+
         self.btn = CTk.CTkButton(master=self.general_frame, text="Готово", width=100, command=self.get_value)
         self.btn.pack()
 
@@ -36,11 +41,13 @@ class App(CTk.CTk):
         self.name = ""
         self.birthday = ""
         self.language = ""
+        self.gender = ""
 
     def get_value(self):
         self.name = self.birthday_entry.get()
         self.birthday = self.name_entry.get()
         self.language = self.language_entry.get()
+        self.gender = self.gender_entry.get()
         # App.destroy()
 
         # Закрытие окна

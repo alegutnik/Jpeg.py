@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os
 
 from pdf2image import convert_from_path
@@ -83,7 +81,7 @@ pdf.drawCentredString((width_cell + 1.5) * mm, (height - height_cell * 0.3 - 5) 
 
 pdf.save()
 path = f"result/{name}_{birthday}/{name}_{birthday}"
-images = convert_from_path(f"{path}.pdf", 500, poppler_path=r'poppler-0.68.0\bin')
+images = convert_from_path(f"{path}.pdf", 400, poppler_path=r'poppler-0.68.0\bin')
 images[0].save(f"{path}.jpeg", "JPEG")
 
 os.startfile(f"{path}.jpeg".replace("/","\\"))
